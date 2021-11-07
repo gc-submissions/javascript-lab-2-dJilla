@@ -8,7 +8,7 @@ let randomDamage = () => {
 let chooseOption = (opt1, opt2) => {
     // grab a random number between 0 and 1
     let randNum = Math.round(Math.random());   // round that number to avoid fractions
-    return (randNum === 0 ? opt1 : opt2);   // return opt 1 if 0, else return opt2
+    return (randNum === 0 ? opt1 : opt2);   // return opt1 if 0, else return opt2
 }
 
 let attackPlayer = function (health) {
@@ -35,8 +35,9 @@ function fight (player1, player2, player1Health, player2Health) {
     // create a loop to run the game until somebody dies
     while (true) {
         
-        let attacker = chooseOption('player1', 'player2');   // when player 1 is attacking:
-        if (attacker === 'player1') {
+        let attacker = chooseOption('player1', 'player2');   // randomly decides who attacks
+
+        if (attacker === 'player1') {   // when player 1 is attacking:
 
             console.log(`${player1} attacks ${player2}.`)   // declare the attacker
             player2Health = attackPlayer(player2Health);   // calculate the attack
@@ -47,7 +48,7 @@ function fight (player1, player2, player1Health, player2Health) {
                 break;   // game ends
             }
             
-        } else {   //when player 1 is attacking:
+        } else {   //when player 2 is attacking:
 
             console.log(`${player2} attacks ${player1}.`)   // declare the attacker
             player1Health = attackPlayer(player1Health);   // calculate the attack
